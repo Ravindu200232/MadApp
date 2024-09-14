@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">todo</string>
+    <string name="app_name">My Application</string>
+    <string-array name="todo_options">
+        <item>Work</item>
+        <item>Personal</item>
+        <item>Shopping</item>
+        <item>Others</item>
+    </string-array>
 </resources>
