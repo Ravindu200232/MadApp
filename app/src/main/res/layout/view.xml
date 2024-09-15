@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- Updated XML Layout (view.xml) -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -40,7 +40,6 @@
                 android:textColor="@color/white"
                 android:fontFamily="sans-serif"/>
 
-            <!-- Add TextViews for date and time here -->
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
@@ -61,6 +60,30 @@
                 android:textColor="@color/white"
                 android:fontFamily="sans-serif"/>
 
+            <TextView
+                android:id="@+id/end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <!-- Add end_date TextView here -->
+            <TextView
+                android:id="@+id/end_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

@@ -17,6 +17,8 @@ class Adapter(private val data: List<CardInfo>) : RecyclerView.Adapter<Adapter.V
         val layout: LinearLayout = itemView.findViewById(R.id.mylayout)
         val date: TextView = itemView.findViewById(R.id.date)
         val time: TextView = itemView.findViewById(R.id.time)
+        val endTime: TextView = itemView.findViewById(R.id.end_time)
+        val enddate: TextView = itemView.findViewById(R.id.end_date)// Updated field name
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,23 +30,30 @@ class Adapter(private val data: List<CardInfo>) : RecyclerView.Adapter<Adapter.V
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
 
+        // Set the background color based on priority
         when (item.priority.toLowerCase()) {
             "high" -> holder.layout.setBackgroundColor(Color.parseColor("#F05454"))
             "medium" -> holder.layout.setBackgroundColor(Color.parseColor("#EDC988"))
             else -> holder.layout.setBackgroundColor(Color.parseColor("#EDC988"))
         }
 
+        // Set the text for each view
         holder.title.text = item.title
         holder.priority.text = item.priority
-        holder.date.text = item.Rdate.toString()
-        holder.time.text = item.Rtime.toString()
+        holder.date.text = item.Rdate
+        holder.time.text = item.Rtime
+        holder.enddate.text = item.endDate  // Use the text property to set the text
+        holder.endTime.text = item.endTime  // Use the text property to set the text
 
+        // Handle click events
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, UpdateCard::class.java)
             intent.putExtra("id", position)
             holder.itemView.context.startActivity(intent)
         }
     }
+
+
 
     override fun getItemCount(): Int {
         return data.size

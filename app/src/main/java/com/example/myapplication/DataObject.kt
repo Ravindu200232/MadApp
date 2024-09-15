@@ -1,21 +1,16 @@
 package com.example.myapplication
 
 object DataObject {
+    private val dataList = mutableListOf<CardInfo>()
 
-    var listdata= mutableListOf<CardInfo>()
-
-    fun setData(title: String,priority: String,Rdate:String,Rtime:String){
-
-        listdata.add(CardInfo(title,priority,Rdate,Rtime))
+    fun setData(title: String, priority: String, date: String, time: String, endDate: String, endTime: String) {
+        val cardInfo = CardInfo(title, priority, date, time, endDate, endTime)
+        dataList.add(cardInfo)
     }
 
-    fun getAllData():List<CardInfo>
-    {
-        return listdata
-    }
+    fun getAllData(): List<CardInfo> = dataList
 
-    fun deleteAll(){
-        listdata.clear()
+    fun deleteAll() {
+        dataList.clear()
     }
-
 }

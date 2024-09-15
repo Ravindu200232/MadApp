@@ -1,0 +1,16 @@
+package com.example.myapplication
+
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+
+class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    val title: TextView = itemView.findViewById(R.id.title)
+    val priority: TextView = itemView.findViewById(R.id.priority)
+    val layout: LinearLayout = itemView.findViewById(R.id.mylayout)
+    val date: TextView = itemView.findViewById(R.id.date)
+    val time: TextView = itemView.findViewById(R.id.time)
+    val endDate: TextView = itemView.findViewById(R.id.end_date)  // Updated field name
+    val endTime: TextView = itemView.findViewById(R.id.end_time)
+}

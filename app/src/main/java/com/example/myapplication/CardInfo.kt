@@ -2,8 +2,11 @@ package com.example.myapplication
 
 
 data class CardInfo(
-    var title:String,
-    var priority:String,
-    var Rdate: String,
-    var Rtime: String
+    val title: String,
+    val priority: String,
+    val Rdate: String,
+    val Rtime: String,
+    val endDate: String,
+    val endTime: String
 )
+

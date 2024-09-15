@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             recyclerView.adapter?.notifyDataSetChanged()
         }
 
+
         recyclerView.adapter = Adapter(DataObject.getAllData())
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
