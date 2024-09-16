@@ -6,12 +6,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.activity.ComponentActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class CreateCard : ComponentActivity() {
     private lateinit var selectedDateTextView: TextView
@@ -19,7 +21,7 @@ class CreateCard : ComponentActivity() {
     private lateinit var selectedEndDateTextView: TextView
     private lateinit var selectedEndTimeTextView: TextView
     private lateinit var createTitle: EditText
-    private lateinit var createPriority: EditText
+    private lateinit var priorityGroup: RadioGroup
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     private val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
 
@@ -33,7 +35,7 @@ class CreateCard : ComponentActivity() {
         selectedEndDateTextView = findViewById(R.id.selected_end_date)
         selectedEndTimeTextView = findViewById(R.id.selected_end_time)
         createTitle = findViewById(R.id.create_title)
-        createPriority = findViewById(R.id.create_priority)
+        priorityGroup = findViewById(R.id.priority_group)
 
         // Initialize Buttons
         val selectDateButton: Button = findViewById(R.id.select_date_button)
@@ -73,12 +75,11 @@ class CreateCard : ComponentActivity() {
         // Set up save button click listener
         saveButton.setOnClickListener {
             val title = createTitle.text.toString().trim()
-            val priority = createPriority.text.toString().trim()
+            val priority = getSelectedPriority()
             val date = selectedDateTextView.text.toString().trim()
             val time = selectedTimeTextView.text.toString().trim()
             val endDate = selectedEndDateTextView.text.toString().trim()
             val endTime = selectedEndTimeTextView.text.toString().trim()
-
 
             if (title.isNotEmpty() && priority.isNotEmpty() && date.isNotEmpty() && time.isNotEmpty() && endDate.isNotEmpty() && endTime.isNotEmpty()) {
                 DataObject.setData(title, priority, date, time, endDate, endTime)
@@ -87,6 +88,12 @@ class CreateCard : ComponentActivity() {
                 finish() // Optional: to close the current activity after saving
             }
         }
+    }
+
+    private fun getSelectedPriority(): String {
+        val selectedId = priorityGroup.checkedRadioButtonId
+        val radioButton: RadioButton = findViewById(selectedId)
+        return radioButton.text.toString()
     }
 
     private fun showDatePicker(onDateSelected: (Date) -> Unit) {
