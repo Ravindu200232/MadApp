@@ -2,10 +2,11 @@ package com.example.myapplication
 
 
 data class CardInfo(
-    val title: String,
-    val priority: String,
-    val Rdate: String,
-    val Rtime: String
-
+    var title: String,
+    var priority: String,
+    var Rdate: String,
+    var Rtime: String,
+    var isCompleted: Boolean = false // New property to track completion
 )
+
 

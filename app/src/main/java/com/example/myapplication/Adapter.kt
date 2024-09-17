@@ -2,9 +2,11 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +19,7 @@ class Adapter(private var data: List<CardInfo>) : RecyclerView.Adapter<Adapter.V
         val layout: LinearLayout = itemView.findViewById(R.id.mylayout)
         val date: TextView = itemView.findViewById(R.id.date)
         val time: TextView = itemView.findViewById(R.id.time)
-
+        val completeButton: Button = itemView.findViewById(R.id.complete_button)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -42,12 +44,33 @@ class Adapter(private var data: List<CardInfo>) : RecyclerView.Adapter<Adapter.V
         holder.date.text = item.Rdate
         holder.time.text = item.Rtime
 
-
-        // Handle click events
+        // Handle click events for the item view
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, UpdateCard::class.java)
             intent.putExtra("id", position)
             holder.itemView.context.startActivity(intent)
+        }
+
+        // Handle click events for the complete button
+        holder.completeButton.setOnClickListener {
+            // Mark the task as complete by blurring or crossing out
+            item.isCompleted = true
+            notifyItemChanged(position)
+        }
+
+        // Update the view to reflect completion
+        if (item.isCompleted) {
+            holder.title.paintFlags = holder.title.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            holder.layout.setBackgroundColor(Color.parseColor("#D3D3D3")) // Light grey to indicate completion
+            holder.completeButton.visibility = View.GONE
+        } else {
+            holder.title.paintFlags = holder.title.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            holder.layout.setBackgroundColor(when (item.priority.toLowerCase()) {
+                "high" -> Color.parseColor("#F05454")
+                "medium" -> Color.parseColor("#32CD32")
+                else -> Color.parseColor("#EDC988")
+            })
+            holder.completeButton.visibility = View.VISIBLE
         }
     }
 

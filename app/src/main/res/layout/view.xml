@@ -60,7 +60,15 @@
                 android:textColor="@color/white"
                 android:fontFamily="sans-serif"/>
 
-
+            <!-- Add the Complete button here -->
+            <Button
+                android:id="@+id/complete_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Complete"
+                android:layout_marginTop="10dp"
+                android:background="@color/green"
+                android:textColor="@color/white"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
