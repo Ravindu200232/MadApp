@@ -3,8 +3,8 @@ package com.example.myapplication
 object DataObject {
     private val dataList = mutableListOf<CardInfo>()
 
-    fun setData(title: String, priority: String, date: String, time: String, endDate: String, endTime: String) {
-        val cardInfo = CardInfo(title, priority, date, time, endDate, endTime)
+    fun setData(title: String, priority: String, date: String, time: String) {
+        val cardInfo = CardInfo(title, priority, date, time)
         dataList.add(cardInfo)
     }
 

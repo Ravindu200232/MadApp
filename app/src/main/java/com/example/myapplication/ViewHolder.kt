@@ -11,6 +11,5 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val layout: LinearLayout = itemView.findViewById(R.id.mylayout)
     val date: TextView = itemView.findViewById(R.id.date)
     val time: TextView = itemView.findViewById(R.id.time)
-    val endDate: TextView = itemView.findViewById(R.id.end_date)  // Updated field name
-    val endTime: TextView = itemView.findViewById(R.id.end_time)
+
 }

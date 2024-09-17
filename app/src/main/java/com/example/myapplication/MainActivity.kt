@@ -83,9 +83,8 @@ class MainActivity : AppCompatActivity() {
             fullDataList.filter {
                 it.title.contains(query, ignoreCase = true) ||
                         it.Rdate.contains(query, ignoreCase = true) ||
-                        it.Rtime.contains(query, ignoreCase = true) ||
-                        it.endDate.contains(query, ignoreCase = true) ||
-                        it.endTime.contains(query, ignoreCase = true)
+                        it.Rtime.contains(query, ignoreCase = true)
+
             }
         }
         adapter.updateData(filteredDataList)

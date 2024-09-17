@@ -32,16 +32,14 @@ class CreateCard : ComponentActivity() {
         // Initialize TextViews and EditTexts
         selectedDateTextView = findViewById(R.id.selected_date)
         selectedTimeTextView = findViewById(R.id.selected_time)
-        selectedEndDateTextView = findViewById(R.id.selected_end_date)
-        selectedEndTimeTextView = findViewById(R.id.selected_end_time)
+
         createTitle = findViewById(R.id.create_title)
         priorityGroup = findViewById(R.id.priority_group)
 
         // Initialize Buttons
         val selectDateButton: Button = findViewById(R.id.select_date_button)
         val selectTimeButton: Button = findViewById(R.id.select_time_button)
-        val selectEndDateButton: Button = findViewById(R.id.select_end_date_button)
-        val selectEndTimeButton: Button = findViewById(R.id.select_end_time_button)
+
         val saveButton: Button = findViewById(R.id.save_button)
 
         // Set up date picker button click listener
@@ -58,19 +56,6 @@ class CreateCard : ComponentActivity() {
             }
         }
 
-        // Set up end date picker button click listener
-        selectEndDateButton.setOnClickListener {
-            showDatePicker { date ->
-                selectedEndDateTextView.text = dateFormat.format(date)
-            }
-        }
-
-        // Set up end time picker button click listener
-        selectEndTimeButton.setOnClickListener {
-            showTimePicker { time ->
-                selectedEndTimeTextView.text = timeFormat.format(time)
-            }
-        }
 
         // Set up save button click listener
         saveButton.setOnClickListener {
@@ -78,11 +63,10 @@ class CreateCard : ComponentActivity() {
             val priority = getSelectedPriority()
             val date = selectedDateTextView.text.toString().trim()
             val time = selectedTimeTextView.text.toString().trim()
-            val endDate = selectedEndDateTextView.text.toString().trim()
-            val endTime = selectedEndTimeTextView.text.toString().trim()
 
-            if (title.isNotEmpty() && priority.isNotEmpty() && date.isNotEmpty() && time.isNotEmpty() && endDate.isNotEmpty() && endTime.isNotEmpty()) {
-                DataObject.setData(title, priority, date, time, endDate, endTime)
+
+            if (title.isNotEmpty() && priority.isNotEmpty() && date.isNotEmpty() && time.isNotEmpty()) {
+                DataObject.setData(title, priority, date, time)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish() // Optional: to close the current activity after saving

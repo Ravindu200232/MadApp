@@ -17,8 +17,7 @@ class Adapter(private var data: List<CardInfo>) : RecyclerView.Adapter<Adapter.V
         val layout: LinearLayout = itemView.findViewById(R.id.mylayout)
         val date: TextView = itemView.findViewById(R.id.date)
         val time: TextView = itemView.findViewById(R.id.time)
-        val endTime: TextView = itemView.findViewById(R.id.end_time)
-        val enddate: TextView = itemView.findViewById(R.id.end_date)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -42,8 +41,7 @@ class Adapter(private var data: List<CardInfo>) : RecyclerView.Adapter<Adapter.V
         holder.priority.text = item.priority
         holder.date.text = item.Rdate
         holder.time.text = item.Rtime
-        holder.enddate.text = item.endDate
-        holder.endTime.text = item.endTime
+
 
         // Handle click events
         holder.itemView.setOnClickListener {
